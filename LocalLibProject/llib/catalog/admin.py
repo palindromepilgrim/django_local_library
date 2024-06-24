@@ -16,14 +16,14 @@ class AuthorAdmin(admin.ModelAdmin):
     fields = ['first_name', 'last_name', ('date_of_birth', 'date_of_death')]
     inlines = [BooksInline]
 class BookInstanceAdmin(admin.ModelAdmin):
-    list_display = ['book', 'status', 'due_back', 'id']
+    list_display = ['book', 'status', 'borrower', 'due_back', 'id']
     list_filter = ('status', 'due_back')
     fieldsets = (
         ('Basic Information', {
             'fields': ('book', 'imprint', 'id')
         }),
         ('Availability', {
-            'fields': ('status', 'due_back')
+            'fields': ('status', 'due_back', 'borrower')
         }),
     )
 class GenreAdmin(admin.ModelAdmin):
